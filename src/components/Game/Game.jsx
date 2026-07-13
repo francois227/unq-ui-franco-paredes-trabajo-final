@@ -10,6 +10,7 @@ import { followsChainRule, isWordRepeated } from "../../utils/validation";
 const Game = () => {
   const [input, setInput] = useState("");
   const [words, setWords] = useState([]);
+  const [error, setError] = useState("");
 
   const handleSubmit = async () => {
     const word = input.trim().toLowerCase();
@@ -22,24 +23,25 @@ const Game = () => {
       const result = await validateWord(word);
 
       if (!result.exists) {
-        console.log("La palabra no existe.");
+        setError("La palabra no existe.");
         return;
       }
 
       if (isWordRepeated(words, word)) {
-        console.log("La palabra ya fue utilizada.");
+        setError("La palabra ya fue utilizada.");
         return;
       }
 
       if (!followsChainRule(words, word)) {
-        console.log("La palabra no respeta la cadena.");
+        setError("La palabra no respeta la regla de la cadena.");
         return;
       }
 
       setWords((previousWords) => [...previousWords, word]);
       setInput("");
+      setError("");
     } catch (error) {
-      console.error(error);
+      setError(error);
     }
   };
 
@@ -51,7 +53,8 @@ const Game = () => {
         <Score />
       </section>
       <WordInput value={input} onChange={setInput} onSubmit={handleSubmit} />
-      <WordChain />
+      {error && <p className={styles.error}>{error}</p>}
+      <WordChain words={words} />
     </main>
   );
 }

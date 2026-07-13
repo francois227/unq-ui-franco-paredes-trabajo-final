@@ -4,13 +4,19 @@ import WordInput from "../WordInput/WordInput";
 import WordChain from "../WordChain/WordChain";
 import styles from "./Game.module.css";
 import { useState } from "react";
+import { validateWord } from "../../services/wordService";
 
 const Game = () => {
     const [input, setInput] = useState("");
 
-    const handleSubmit = () => {
-        console.log(input);
-    };
+    const handleSubmit = async () => {
+      try {
+        const result = await validateWord(input);
+        console.log(result);
+      } catch (error) {
+        console.error(error);
+      }
+};
 
     return (
     <main className={styles.container}>

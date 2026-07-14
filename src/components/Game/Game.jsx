@@ -8,6 +8,7 @@ import { validateWord } from "../../services/wordService";
 import { followsChainRule, isWordRepeated } from "../../utils/validation";
 import { calculateScore } from "../../utils/score";
 import useCountdown from "../../hooks/useCountdown";
+import GameOverModal from "../GameOverModal/GameOverModal";
 
 const Game = () => {
   const [input, setInput] = useState("");
@@ -74,15 +75,7 @@ const Game = () => {
       </section>
       <WordInput value={input} onChange={setInput} onSubmit={handleSubmit} disabled={gameOver} />
       {gameOver && (
-        <>
-          <p className={styles.gameOver}>
-            ¡Tiempo agotado!
-          </p>
-
-          <button onClick={handleRestart}>
-            Jugar nuevamente
-          </button>
-        </>
+        <GameOverModal score={score} totalWords={words.length} onRestart={handleRestart} />
       )}
       {error && <p className={styles.error}>{error}</p>}
       <WordChain words={words} />

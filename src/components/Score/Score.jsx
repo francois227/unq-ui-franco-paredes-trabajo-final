@@ -3,7 +3,7 @@ import styles from "./Score.module.css";
 const Score = ({ score }) => {
   return (
     <div className={styles.score}>
-      <span>🏆 Puntaje</span>
+      <span>Puntaje</span>
       <strong>{score}</strong>
     </div>
   );

@@ -1,0 +1,36 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    min-width: 350px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+    color: #000;
+}
+
+.modal h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Arial', sans-serif;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.modal p {
+    margin: .75rem 0;
+}
+
+.modal button {
+    margin-top: 1.5rem;
+}

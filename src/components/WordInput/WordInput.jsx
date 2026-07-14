@@ -1,12 +1,15 @@
 import styles from "./WordInput.module.css";
 
+
 const WordInput = ({ value, onChange, onSubmit, disabled }) => {
-    const handleSubmit = (event) => {
+
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     onSubmit();
-};
-return (
+  };
+
+  return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <input
         type="text"

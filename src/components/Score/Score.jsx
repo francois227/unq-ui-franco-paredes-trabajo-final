@@ -1,10 +1,10 @@
 import styles from "./Score.module.css";
 
-const Score = () => {
+const Score = ({ score }) => {
   return (
     <div className={styles.score}>
       <span>🏆 Puntaje</span>
-      <strong>0</strong>
+      <strong>{score}</strong>
     </div>
   );
 };

@@ -6,11 +6,13 @@ import styles from "./Game.module.css";
 import { useState } from "react";
 import { validateWord } from "../../services/wordService";
 import { followsChainRule, isWordRepeated } from "../../utils/validation";
+import { calculateScore } from "../../utils/score";
 
 const Game = () => {
   const [input, setInput] = useState("");
   const [words, setWords] = useState([]);
   const [error, setError] = useState("");
+  const score = calculateScore(words);
 
   const handleSubmit = async () => {
     const word = input.trim().toLowerCase();
@@ -50,7 +52,7 @@ const Game = () => {
       <h1 className={styles.title}>Palabras Encadenadas</h1>
       <section className={styles.header}>
         <Timer />
-        <Score />
+        <Score score={score} />
       </section>
       <WordInput value={input} onChange={setInput} onSubmit={handleSubmit} />
       {error && <p className={styles.error}>{error}</p>}

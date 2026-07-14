@@ -7,12 +7,15 @@ import { useState } from "react";
 import { validateWord } from "../../services/wordService";
 import { followsChainRule, isWordRepeated } from "../../utils/validation";
 import { calculateScore } from "../../utils/score";
+import useCountdown from "../../hooks/useCountdown";
 
 const Game = () => {
   const [input, setInput] = useState("");
   const [words, setWords] = useState([]);
   const [error, setError] = useState("");
+  const [gameOver, setGameOver] = useState(false);
   const score = calculateScore(words);
+  const { timeLeft, start, reset, stop, restart } = useCountdown(15, () => { setGameOver(true); });
 
   const handleSubmit = async () => {
     const word = input.trim().toLowerCase();
@@ -39,22 +42,48 @@ const Game = () => {
         return;
       }
 
+      if (words.length === 0) {
+        start();
+      } else {
+        reset();
+      }
+
       setWords((previousWords) => [...previousWords, word]);
       setInput("");
       setError("");
     } catch (error) {
-      setError(error);
+      setError("No se pudo validar la palabra ingresada. Intente nuevamente.");
     }
+  };
+
+  const handleRestart = () => {
+    setWords([]);
+    setInput("");
+    setError("");
+    setGameOver(false);
+
+    restart();
   };
 
   return (
     <main className={styles.container}>
       <h1 className={styles.title}>Palabras Encadenadas</h1>
       <section className={styles.header}>
-        <Timer />
+        <Timer timeLeft={timeLeft} />
         <Score score={score} />
       </section>
-      <WordInput value={input} onChange={setInput} onSubmit={handleSubmit} />
+      <WordInput value={input} onChange={setInput} onSubmit={handleSubmit} disabled={gameOver} />
+      {gameOver && (
+        <>
+          <p className={styles.gameOver}>
+            ¡Tiempo agotado!
+          </p>
+
+          <button onClick={handleRestart}>
+            Jugar nuevamente
+          </button>
+        </>
+      )}
       {error && <p className={styles.error}>{error}</p>}
       <WordChain words={words} />
     </main>

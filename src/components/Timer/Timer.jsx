@@ -1,10 +1,10 @@
 import styles from "./Timer.module.css";
 
-const Timer = () => {
+const Timer = ({ timeLeft }) => {
   return (
     <div className={styles.timer}>
       <span>⏱️ Tiempo</span>
-      <strong>15</strong>
+      <strong>{timeLeft}</strong>
     </div>
   );
 };

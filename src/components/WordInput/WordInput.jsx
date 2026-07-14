@@ -1,6 +1,6 @@
 import styles from "./WordInput.module.css";
 
-const WordInput = ({ value, onChange, onSubmit }) => {
+const WordInput = ({ value, onChange, onSubmit, disabled }) => {
     const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -14,9 +14,10 @@ return (
         onChange={(e) => onChange(e.target.value)}
         placeholder="Ingresá una palabra..."
         autoComplete="off"
+        disabled={disabled}
       />
 
-      <button type="submit">
+      <button type="submit" disabled={disabled}>
         Enviar
       </button>
     </form>

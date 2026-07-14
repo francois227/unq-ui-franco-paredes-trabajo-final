@@ -9,6 +9,9 @@ import { followsChainRule, isWordRepeated } from "../../utils/validation";
 import { calculateScore } from "../../utils/score";
 import useCountdown from "../../hooks/useCountdown";
 import GameOverModal from "../GameOverModal/GameOverModal";
+import { saveScore } from "../../utils/leaderboard";
+import Leaderboard from "../Leaderboard/Leaderboard";
+
 
 const Game = () => {
   const [input, setInput] = useState("");
@@ -16,7 +19,13 @@ const Game = () => {
   const [error, setError] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const score = calculateScore(words);
-  const { timeLeft, start, reset, stop, restart } = useCountdown(15, () => { setGameOver(true); });
+
+  const handleGameOver = () => {
+    saveScore(calculateScore(words));
+    setGameOver(true);
+  };
+
+  const { timeLeft, start, reset, restart } = useCountdown(15, handleGameOver);
 
   const handleSubmit = async () => {
     const word = input.trim().toLowerCase();
@@ -79,6 +88,7 @@ const Game = () => {
       )}
       {error && <p className={styles.error}>{error}</p>}
       <WordChain words={words} />
+      <Leaderboard />
     </main>
   );
 }

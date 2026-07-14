@@ -1,0 +1,35 @@
+.container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 2px solid #ddd;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.container h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.container ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.container li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+}
+
+.container li:last-child {
+  border-bottom: none;
+}
+
+.container p {
+  text-align: center;
+  color: #777;
+}

@@ -1,31 +1,28 @@
 import styles from "./WordChain.module.css";
 
 const WordChain = ({ words }) => {
-  const rows = [];
-
-  for (let i = 0; i < words.length; i += 3) {
-    rows.push(words.slice(i, i + 3));
-  }
-
   return (
-    <div className={styles.chain}>
-      {rows.map((row, rowIndex) => (
-        <div key={rowIndex}>
-          <div className={styles.row}>
-            {row.map((word, index) => (
-              <span key={word}>
-                {word}
-                {index < row.length - 1 && " → "}
-              </span>
-            ))}
-          </div>
+    <section className={styles.chain}>
+      <h2>Cadena de palabras</h2>
 
-          {rowIndex < rows.length - 1 && (
-            <div className={styles.connector}>↓</div>
-          )}
+      {words.length === 0 ? (
+        <p>Todavía no hay palabras.</p>
+      ) : (
+        <div className={styles.list}>
+          {words.map((word, index) => (
+            <div key={word} className={styles.item}>
+              <div className={styles.word}>
+                {word}
+              </div>
+
+              {index < words.length - 1 && (
+                <div className={styles.connector} />
+              )}
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </section>
   );
 };
 

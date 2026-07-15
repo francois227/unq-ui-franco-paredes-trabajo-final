@@ -1,29 +1,33 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
 }
 
 .title {
   text-align: center;
   margin-bottom: 2rem;
+  font-size: clamp(2rem, 6vw, 3.5rem);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .error {
   margin-top: 1rem;
-  color: #d32f2f;
+  color: var(--error);
   font-weight: 600;
 }
 
 .gameOver {
   margin-top: 1rem;
-  color: #c62828;
+  color: var(--error);
   font-weight: bold;
   font-size: 1.1rem;
 }

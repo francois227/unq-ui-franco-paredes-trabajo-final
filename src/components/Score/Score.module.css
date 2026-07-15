@@ -4,3 +4,7 @@
   gap: 0.25rem;
   text-align: right;
 }
+
+.score strong {
+  color: var(--accent-yellow);
+}

@@ -1,5 +1,11 @@
 .timer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  color: var(--text);
+}
+
+.timer strong {
+  color: var(--accent-blue);
+  font-size: 2rem;
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  min-width: 2ch;
 }

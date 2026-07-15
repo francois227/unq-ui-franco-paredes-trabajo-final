@@ -2,9 +2,15 @@
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
+  --panel: #f6f8fa;
+  --panel-2: #eaeef2;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
+  --accent-blue: #2563eb;
+  --accent-blue-hover: #1d4ed8;
+  --accent-yellow: #b45309;
+  --error: #dc2626;
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
@@ -34,10 +40,16 @@
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
+    --bg: #161b22;
+    --panel: #1f2937;
+    --panel-2: #273449;
+    --border: #3b4a5e;
     --code-bg: #1f2028;
     --accent: #c084fc;
+    --accent-blue: #60a5fa;
+    --accent-blue-hover: #3b82f6;
+    --accent-yellow: #fbbf24;
+    --error: #ef4444;
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
@@ -59,11 +71,11 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  padding: 0 1rem;
 }
 
 h1,

@@ -3,6 +3,7 @@ import styles from "./Leaderboard.module.css";
 
 const Leaderboard = () => {
     const leaderboard = getLeaderboard();
+    const rows = Array.from({ length: 10 }, (_, index) => leaderboard[index] ?? null);
 
     const getPosition = (index) => {
         switch (index) {
@@ -21,19 +22,14 @@ const Leaderboard = () => {
         <section className={styles.container}>
             <h2>Top 10</h2>
 
-            {leaderboard.length === 0 ? (
-                <p>No hay partidas registradas.</p>
-            ) : (
-                <ol>
-                    {leaderboard.map((score, index) => (
-                        <li key={index}>
-                            <span>{getPosition(index)}</span>
-
-                            <span>{score} puntos</span>
-                        </li>
-                    ))}
-                </ol>
-            )}
+            <ol>
+                {rows.map((score, index) => (
+                    <li key={index} className={score === null ? styles.empty : undefined}>
+                        <span>{getPosition(index)}</span>
+                        <span>{score !== null ? `${score} puntos` : "—"}</span>
+                    </li>
+                ))}
+            </ol>
         </section>
     );
 };

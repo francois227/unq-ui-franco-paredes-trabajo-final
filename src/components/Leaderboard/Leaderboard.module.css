@@ -50,3 +50,7 @@
   color: var(--text);
   padding: 0.5rem 0;
 }
+
+.container li.empty {
+  opacity: 0.4;
+}
